@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=d, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Edit Account</title>
+    <meta name="description" content="A really cool site!">
+</head>
+
+<body>
+
+    <div class="col">
+        <h1 class="text-left">Edit My Account </h1>
+    </div>
+    <div class="offsest-md-5">
+        <a href="/quotes" class="top nav-style btn btn-outline-primary">&#8249;&nbsp;&nbsp;Back</a>
+    </div>
+
+
+    <div class="col-8 ">
+        <form action="/editmyaccount/{{ user.id }}/update" method="POST">
+            {% csrf_token %}
+            <div class="row">
+                <label for="title" class="title">First Name</label>
+                <input type="text" class="form-control" name="firstname" value="{{ user.first_name }}">
+            </div>
+            <div class="row mt-4">
+                <div class="col-4 p-0 mr-5">
+                    <label for="network" class="title">Last Name</label>
+                    <input type="text" class="form-control" name="lastname" value="{{ user.last_name }}">
+                </div>
+                <div class="col p-0 ml-5">
+                    <label for="release_date" class="title">Email </label>
+                    <input type="date" class="form-control" name="email"
+                        value="{{ user.email }}" >
+                </div>
+            </div>
+            <div class="row mt-5 justify-content-center">
+                <button type="submit" class="btn btn-primary pl-4 pr-4" name="updated_at"
+                    value="{{ quote.updated_at }}">Update</button>
+            </div>
+
+
+        </form>
+
+    </div>
+    </div>
+
+    </div>
+</body>
+
+</html>
