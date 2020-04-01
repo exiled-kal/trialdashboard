@@ -41,7 +41,7 @@ def success(request):
     }
     return render(request, 'success.html', context)
 
-def addnewuser(request):
+#def addnewuser(request):
     context = {
         'user' : request.session['user.id'],
     }
@@ -67,7 +67,7 @@ def AppendAuthor(request, id):
 
 
 
-def editmyaccount(request, id):
+def editmyaccount(request):
     context = {
         'users': User.objects.get(request.session['user_id'])
     }

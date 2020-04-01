@@ -53,14 +53,15 @@ class User(models.Model):
     password = models.CharField(max_length=255)
     objects = UserManager()
     
+
     
-    
-class Authors(models.Model):
+class Author(models.Model):
+    user = models.ForeignKey(User,on_delete=models.DO_NOTHING,related_name="authors",blank=True, null=True)
     first_name = models.CharField(max_length=45)
     last_name = models.CharField(max_length=45)
     description = models.TextField()
     
     def __repr__(self):
-        return f"<Author object:{self.first_name} ({self.last_name}){self.quote}>"
+        return f"<Author object:{self.first_name} ({self.last_name}){self.description}>"
     
     
