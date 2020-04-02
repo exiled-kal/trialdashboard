@@ -21,7 +21,7 @@
 
 
     <div class="col-8 ">
-        <form action="/editmyaccount/{{ user.id }}/update" method="POST">
+        <form action="./edit/{{ user.id }}/update" method="POST">
             {% csrf_token %}
             <div class="row">
                 <label for="title" class="title">First Name</label>

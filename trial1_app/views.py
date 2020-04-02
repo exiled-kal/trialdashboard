@@ -42,31 +42,53 @@ def success(request):
     }
     return render(request, 'success.html', context)
 
+def process_new(request):
+    errors = Blog.objects.basic_validator(request.POST)
+    
+    if len(errors) > 0:
+        for key,value in errors.items():
+            messages.error(request, value)
+            
+        return redirect ('/blog/edit/'+id)
+    else:
+        
+        Blog.objects.create(user=user,description=reques.POST['description'])
+    return redirect('./')
+
 #def addnewuser(request):
+#    context = {
+ # }
+
+   # return render(request, "success.html",context)
+
+
+#def like(request, id):
+    #context = {
+     #   'blog': Blog.objects.creat(id=id)
+    #}    
+    #return render(request, 'success.html', context)
+
+
+
+#def CreateNew(request):  
+ #   return HttpResponse("create a placeholder")
+
+def AppendBlog(request, id):
+    blog = Blog.objects.get(id=id)
+    blog.name = request.POST['name']
+    blog.description = request.POST['description']
+    blog.save
+    return redirect(f"/success/{blog.id}/update")
+
+def blog(request, id):
     context = {
-        'user' : request.session['user.id'],
+        'blog' : Blog.objects.get(id=id)
     }
-
-    return render(request, "success.html")
-
-
+    return render(request, 'user.html', context)
+    
 
 
-
-
-def CreateNew(request):  
-    return HttpResponse("create a placeholder")
-
-#def AppendAuthor(request, id):
-    author = Author.objects.get(id=id)
-    author.name = request.POST['name']
-    author.quote = request.POST['description']
-    author.save
-    return redirect(f"/success/{author.id}/update")
-
-
-
-def editmyaccount(request):
+def edit(request,id):
     context = {
         'users': User.objects.get(request.session['user_id'])
     }

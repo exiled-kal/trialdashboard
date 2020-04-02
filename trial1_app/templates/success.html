@@ -22,9 +22,9 @@
             <h4>Quotes</h4>
             <div class="quotesrow">
                 
-                <P> {{author.id}}</P>
-                <p>{{author.quote}}</p>
-                <p>Posted by {{user.id}}</p>
+                <P> {{blog.id}}</P>
+                <p>{{blog.description}}</p>
+                <p>Posted by {{user.first_name}} {{user.last_name}}</p>
                 <p><a href="/quotes" class="btn btn-outline-secondary ml-3" role="button"><i
                             class="fa fa-thumbs-up">Like</i></a></p>
                 <p><a href="/quotes" class="btn btn-outline-secondary ml-4" role="button">Delete</a></p>
@@ -32,7 +32,7 @@
             </div>
         </div>
         <div class="post">
-            <form action='/editmyaccount' method='post'>
+            <form action="/edit/{{ user.id }}/update" method='post'>
                 {% csrf_token %}
                 <input type='submit' value='Edit My Account'>
             </form>
@@ -43,7 +43,7 @@
         </div>
         <div class="quotes">
             <h2> Add a Quote</h2>
-            <form action="success/update" method="post">
+            <form action="CreateNew" method="post">
                 {%csrf_token%}
                 <div class="quotesfirst">
                     
