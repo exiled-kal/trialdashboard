@@ -21,18 +21,14 @@
         <div class="quotes">
             <h4>Quotes</h4>
             <div class="quotesrow">
-                <table class="table table-striped">
-                    <thead class="thead-dark">
-                        <tr>
-                            <P> {{author.id}}</P>
-                            <p>{{author.description}}</p>
-                            <p>Posted by {{user.first_name}} {{user.last_name}}</p>
-                            <p><a href="/success" class="btn btn-outline-secondary ml-3" role="button"><i
+                
+                <P> {{author.id}}</P>
+                <p>{{author.quote}}</p>
+                <p>Posted by {{user.id}}</p>
+                <p><a href="/quotes" class="btn btn-outline-secondary ml-3" role="button"><i
                             class="fa fa-thumbs-up">Like</i></a></p>
-                            <p><a href="/success/{{author.id}}/destroy" class="btn btn-outline-secondary ml-4" role="button">Delete</a></p>
-                        </tr>
-                    </thead>
-                </table>    
+                <p><a href="/quotes" class="btn btn-outline-secondary ml-4" role="button">Delete</a></p>
+                
             </div>
         </div>
         <div class="post">
@@ -58,7 +54,7 @@
                 <div class="quotessecond">
                     
                     <label for="quote" class="title">Quote</label>
-                    <textarea class="form-control resize" cols="15" rows="5" name="description" value="{{author.description}}">{{author.description}}</textarea>
+                    <textarea class="form-control resize" cols="15" rows="5" name="description" value="{{quotes.description}}">{{quotes.description}}</textarea>
                     
                     
                 </div>

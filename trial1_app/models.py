@@ -55,13 +55,12 @@ class User(models.Model):
     
 
     
-class Author(models.Model):
+class Blog(models.Model):
     user = models.ForeignKey(User,on_delete=models.DO_NOTHING,related_name="authors",blank=True, null=True)
-    first_name = models.CharField(max_length=45)
-    last_name = models.CharField(max_length=45)
     description = models.TextField()
+    user_who_liked = models.ManyToManyField(User,related_name="blogs_liked")
     
-    def __repr__(self):
-        return f"<Author object:{self.first_name} ({self.last_name}){self.description}>"
+    def __str__(self):
+        return f"Blog id {self.id} description: {self.description}"
     
     

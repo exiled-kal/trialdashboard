@@ -3,6 +3,7 @@ from .models import *
 import bcrypt
 
 def index(request):
+    
     return render(request, 'login.html')
 
 def login(request):
@@ -37,7 +38,7 @@ def register(request):
 
 def success(request):
     context = {
-        "users" : User.objects.all()
+        "user" : User.objects.filter().first
     }
     return render(request, 'success.html', context)
 
@@ -53,12 +54,10 @@ def success(request):
 
 
 
-def CreateNewAuthor(request):  
-    Author = Author.objects.create(first_name=request.POST['first_name'], last_name=request.POST['last_name'], quote=request.POST['description'])
-                              
-    return redirect(f"/success/{author.id}")
+def CreateNew(request):  
+    return HttpResponse("create a placeholder")
 
-def AppendAuthor(request, id):
+#def AppendAuthor(request, id):
     author = Author.objects.get(id=id)
     author.name = request.POST['name']
     author.quote = request.POST['description']
