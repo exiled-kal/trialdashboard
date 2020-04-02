@@ -21,14 +21,23 @@
         <div class="quotes">
             <h4>Quotes</h4>
             <div class="quotesrow">
-                
-                <P> {{blog.id}}</P>
-                <p>{{blog.description}}</p>
-                <p>Posted by {{user.first_name}} {{user.last_name}}</p>
-                <p><a href="/quotes" class="btn btn-outline-secondary ml-3" role="button"><i
-                            class="fa fa-thumbs-up">Like</i></a></p>
-                <p><a href="/quotes" class="btn btn-outline-secondary ml-4" role="button">Delete</a></p>
-                
+                <textarea name="story" row="5" cols="50">
+                    {{blog.id}}
+                    {{blog.description}}
+                     <p>Posted by {{user.first_name}} {{user.last_name}}</p>
+                    <p>
+                        <form action="success" class="btn btn-outline-secondary ml-3" role="button">< iclass="fa fa-thumbs-up">
+                            {% csrf_token %}
+                                Like</i>
+                    </p>
+                        </form>
+                    <p>
+                        <form action="success" class="btn btn-outline-secondary ml-4" role="button">
+                            {% csrf_token %}
+                            Delete
+                        </form>
+                    </p>
+                </textarea>
             </div>
         </div>
         <div class="post">
