@@ -14,7 +14,7 @@ urlpatterns = [
     path('delete', views.delete, name='delete'),
     path('<int:number>', views.blog, name='blog'),
     path('edit', views.edit, name='edit'),
-    #path('like', views.like, name='like'),
+    path('back', views.back, name='back'),
     #path('userquote', views.userquote, name='userquote'),
     path('logout', views.logout, name="logout"),
 ]

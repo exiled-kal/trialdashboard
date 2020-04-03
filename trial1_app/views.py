@@ -93,11 +93,13 @@ def blog(request, id):
     
 
 
-def edit(request,id):
-    context = {
-        'users': User.objects.get(request.session['user_id'])
-    }
-    return render(request, "edit.html", context)
+def edit(request):
+    
+    return render(request, "edit.html")
+
+
+def back(request):
+    return render(request, 'success.html')
 
 
 def updatemyaccount(request, id):
