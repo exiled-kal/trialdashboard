@@ -21,7 +21,7 @@
 
 
     <div class="col-8 ">
-        <form action="./edit/{{ user.id }}/update" method="POST">
+        <form action="/edit{{ user.id }}" method="POST">
             {% csrf_token %}
             <div class="row">
                 <label for="title" class="title">First Name</label>
@@ -39,8 +39,9 @@
                 </div>
             </div>
             <div class="row mt-5 justify-content-center">
+
                 <button type="submit" class="btn btn-primary pl-4 pr-4" name="updated_at"
-                    value="{{ blog.updated_at }}">Update</button>
+                    value="{{ user.id }}">Update</button>
             </div>
 
 

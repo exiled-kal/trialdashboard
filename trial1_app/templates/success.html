@@ -21,11 +21,15 @@
         <div class="quotes">
             <h4>Quotes</h4>
             <div class="quotesrow">
-                
-                    {{blog.id}}
-                    {{blog.description}}
-                     <p>Posted by {{user.first_name}} {{user.last_name}}</p>
-                    <p>
+                <ul>
+                    {% for blog in blogentries %}
+                        {{blog.id}}
+                        {{blog.description}}
+                        {% endfor %}
+                        <p>Posted by {{user.first_name}} {{user.last_name}}</p>
+                        <p>
+                    
+                    </ul>
                         <form action="success" class="btn btn-outline-secondary ml-3" role="button"><i
                             class="fa fa-thumbs-up">
                             {% csrf_token %}
@@ -53,7 +57,7 @@
         </div>
         <div class="quotes">
             <h2> Add a Quote</h2>
-            <form action="AppendBlog/success" method="post">
+            <form action="success/AppendBlog" method="post">
                 {%csrf_token%}
                 <div class="quotesfirst">
                     
