@@ -75,10 +75,15 @@ def process_new(request):
 
 def AppendBlog(request, id):
     blog = Blog.objects.get(id=id)
-    blog.name = request.POST['name']
     blog.description = request.POST['description']
     blog.save
     return redirect(f"/success/{blog.id}/update")
+
+def delete(request, id):
+    blog = Blog.objects.get(id=id)
+    blog.description = request.POST['description']
+    blog.delete
+    return redirect(f"/success/{blog.id}/delete")
 
 def blog(request, id):
     context = {

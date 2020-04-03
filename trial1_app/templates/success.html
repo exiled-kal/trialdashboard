@@ -21,23 +21,24 @@
         <div class="quotes">
             <h4>Quotes</h4>
             <div class="quotesrow">
-                <textarea name="story" row="5" cols="50">
+                
                     {{blog.id}}
                     {{blog.description}}
                      <p>Posted by {{user.first_name}} {{user.last_name}}</p>
                     <p>
-                        <form action="success" class="btn btn-outline-secondary ml-3" role="button">< iclass="fa fa-thumbs-up">
+                        <form action="success" class="btn btn-outline-secondary ml-3" role="button"><i
+                            class="fa fa-thumbs-up">
                             {% csrf_token %}
                                 Like</i>
                     </p>
                         </form>
                     <p>
-                        <form action="success" class="btn btn-outline-secondary ml-4" role="button">
+                        <form action="success/delete" class="btn btn-outline-secondary ml-4" role="button">
                             {% csrf_token %}
                             Delete
                         </form>
                     </p>
-                </textarea>
+                
             </div>
         </div>
         <div class="post">
@@ -52,7 +53,7 @@
         </div>
         <div class="quotes">
             <h2> Add a Quote</h2>
-            <form action="CreateNew" method="post">
+            <form action="AppendBlog" method="post">
                 {%csrf_token%}
                 <div class="quotesfirst">
                     
@@ -63,7 +64,7 @@
                 <div class="quotessecond">
                     
                     <label for="quote" class="title">Quote</label>
-                    <textarea class="form-control resize" cols="15" rows="5" name="description" value="{{quotes.description}}">{{quotes.description}}</textarea>
+                    <textarea class="form-control resize" cols="15" rows="5" name="description" value="{{blogs.description}}">{{blogs.description}}</textarea>
                     
                     
                 </div>
