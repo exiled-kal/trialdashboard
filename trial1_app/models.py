@@ -54,24 +54,15 @@ class User(models.Model):
     objects = UserManager()
 
 
-class BlogManager(models.Model):
-    def basic_validator(self, postData):
-        errors = {}
-        
-        if len(postData['description']) < 5:
-            errors['description']= "Blogs description should be at least 5 characters"
-            
-        return errors
+class Message(models.Model):
+    message = models.TextField()
+    user = models.ForeignKey(User,on_delete=models.DO_NOTHING,related_name='messages')
+    created_at = models.DateTimeField(auto_now_add=True) 
+    updated_at = models.DateTimeField(auto_now=True)
+    objects = UserManager()
         
 
     
-class Blog(models.Model):
-    user = models.ForeignKey(User,on_delete=models.DO_NOTHING,related_name="authors",blank=True, null=True)
-    description = models.TextField()
-    user_who_liked = models.ManyToManyField(User,related_name="blogs_liked")
-    objects = BlogManager()
-    
-    def __str__(self):
-        return f"Blog id {self.id} description: {self.description}"
+
     
     

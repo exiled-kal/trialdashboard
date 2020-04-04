@@ -45,7 +45,7 @@ def success(request):
     return render(request, 'success.html', context)
 
 
-def process_new(request):
+def newblog(request):
     errors = Blog.objects.basic_validator(request.POST)
 
     if len(errors) > 0:
@@ -65,10 +65,11 @@ def edit(request):
     return render(request, 'edit.html')
 
 def addnewuser(request,id):
-    user = User.objects.get(id=id)
-    user.first_name = request.POST['first_name']
-    user.last_name = request.POST['last_name']
-    user.save
+    user = User.objects.create(first_name=request.POST['first_name'],
+                                last_name=request.POST['last_name'],
+                                email=request.POST['email'],
+                                password=bcrypt.hashpw(request.POST['password'].encode(), bcrypt.gensalt()).decode())
+    request.session['user_id'] = user.id
 
     return render(f"/success/{user.id}")
 
